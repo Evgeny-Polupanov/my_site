@@ -1,13 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog Posts</title>
-</head>
-<body>
-<h1>{{ message }}</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static_styles %}
+<link rel="stylesheet" href="{% static 'blog/post.css' %}" />
+<link rel="stylesheet" href="{% static 'blog/posts.css' %}" />
+{% endblock %}
+
+{% block page_title %}Blog Posts{% endblock %}
+
+{% block content %}
+<section id="all-posts">
+    <h2>My collected posts</h2>
+    <ul>
+        {% for post in posts %}
+        {% include 'blog/includes/post.html' %}
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
